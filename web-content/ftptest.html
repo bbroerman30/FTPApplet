@@ -1,0 +1,113 @@
+<html>
+ <head>
+    <title> FTP test </title>
+ </head>
+ <body>
+   <h3> FTP tester </h3>
+<!-- <APPLET code="SFTPApplet" id="ftpappl" width="1" height="1" archive="SFTPApplet.jar,jsch-0.1.36.jar" codebase='http://www.maplerunfarm.net/' MAYSCRIPT>
+<PARAM name="FilePercentCallBack" value="setFilePercent">
+<PARAM name="PercentCallback" value="setPercent">
+<PARAM name="StatusCallback" value="setStatus">
+<PARAM name="FileCompleteCallback" value="finished">
+<PARAM name="FTPCompleteCallback" value="allfinished">
+<PARAM name="FileSelectCallback" value="setFilesSelected">
+Java Applet Support Required
+</APPLET>  
+-->
+<APPLET code="FTPApplet" id="ftpappl" width="1" height="1" archive="FTPApplet.jar" MAYSCRIPT>
+<PARAM name="FilePercentCallBack" value="setFilePercent">
+<PARAM name="PercentCallback" value="setPercent">
+<PARAM name="StatusCallback" value="setStatus">
+<PARAM name="FileCompleteCallback" value="finished">
+<PARAM name="FTPCompleteCallback" value="allfinished">
+<PARAM name="FileSelectCallback" value="setFilesSelected">
+Java Applet Support Required
+</APPLET>  
+
+
+ <h3 id='statusarea'> </h3>
+ Percent Complete: <span id='percent'>0</span><br>
+ Total Percent: <span id='overallpercent'>0</span><br>
+ 
+ <b> File List: <span id='filelist'> </span><br>
+ <script type='text/javascript'>
+
+ var fileList = "";
+ var currSecurityKey = "";
+ 
+ function setFilePercent( percent )
+ {
+	 document.getElementById('percent').innerHTML = Math.round(percent);
+ }
+ 
+ function setPercent( percent )
+ {
+	 document.getElementById('overallpercent').innerHTML = Math.round(percent);
+ }
+ 
+ function setStatus( statusMsg )
+ {
+	 statusMsg = statusMsg.replace(/\\/g,'/');
+	 document.getElementById('statusarea').innerHTML = statusMsg;
+	 alert(statusMsg);
+ }
+ 
+ function sendFile( )
+ {
+ 
+ 	var returnCode = document.ftpappl.sendFiles(currSecurityKey, fileList);
+ 	currSecurityKey = document.ftpappl.getAccessCode();
+ }
+ 
+ function getFileList( )
+ {
+ 	document.ftpappl.getFiles(true);
+ }
+ 
+ function setFilesSelected( inFileList )
+ {
+	 fileList = inFileList;
+	 currSecurityKey = document.ftpappl.getAccessCode();
+	 alert ("You selected the file(s): " + inFileList );
+ }
+ 
+ function finished( status, filename )
+ {
+     if( status == true )
+     {
+	     alert( "Successfully sent file '" + filename + "'" );
+	 }
+	 else
+	 {
+	 	alert( "Error sending file '" + filename + "'");
+	 }
+ }
+ 
+function allfinished( status )
+{
+   alert( "Final status: " + status );
+}
+ 
+ function login()
+ {
+    // Create a pop-up window for the user to log in with.
+    
+    window.open ("ftploginserver.php","login","status=0,toolbar=0,menubar=0,scrollbars=0,resizable=0,width=350,height=250"); 
+ }
+ 
+ function setKey( newKey )
+ {
+     currSecurityKey = newKey;
+     document.ftpappl.setAccessCode( newKey );
+     alert("Initial key: " + newKey );
+ }
+
+</script>
+<br>
+<br>
+<input type='button' name='Send File' value='Send File' onClick='sendFile();'>
+<input type='button' name='Get Files' value='Get Files' onClick='getFileList();'><br>
+<input type='button' name='Log in' value='Log in' onClick='login();'>
+
+ </body>
+</html>	
