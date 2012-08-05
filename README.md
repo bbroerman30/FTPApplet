@@ -69,15 +69,15 @@ jarsigner -keystore myKeyStore FTPApplet.jar me
 
 Use the following applet tag to include on a page:
 <pre>
-<APPLET code="FTPApplet" id="ftpappl" width="1" height="1" archive="FTPApplet.jar" MAYSCRIPT>
-<PARAM name="FilePercentCallBack" value="setFilePercent">
-<PARAM name="PercentCallback" value="setPercent">
-<PARAM name="StatusCallback" value="setStatus">
-<PARAM name="FileCompleteCallback" value="finished">
-<PARAM name="FTPCompleteCallback" value="allfinished">
-<PARAM name="FileSelectCallback" value="setFilesSelected">
+%gt;APPLET code="FTPApplet" id="ftpappl" width="1" height="1" archive="FTPApplet.jar" MAYSCRIPT%lt;
+%gt;PARAM name="FilePercentCallBack" value="setFilePercent"%lt;
+%gt;PARAM name="PercentCallback" value="setPercent"%lt;
+%gt;PARAM name="StatusCallback" value="setStatus"%lt;
+%gt;PARAM name="FileCompleteCallback" value="finished"%lt;
+%gt;PARAM name="FTPCompleteCallback" value="allfinished"%lt;
+%gt;PARAM name="FileSelectCallback" value="setFilesSelected"%lt;
 Java Applet Support Required
-</APPLET> 
+%gt;/APPLET%lt;
 </pre>
 
 If the applet loads successfully, you can make calls to it through JavaScript:
