@@ -69,19 +69,22 @@ jarsigner -keystore myKeyStore FTPApplet.jar me
 
 Use the following applet tag to include on a page:
 <pre>
-&gt;APPLET code="FTPApplet" id="ftpappl" width="1" height="1" archive="FTPApplet.jar" MAYSCRIPT&lt;
-&gt;PARAM name="FilePercentCallBack" value="setFilePercent"&lt;
-&gt;PARAM name="PercentCallback" value="setPercent"&lt;
-&gt;PARAM name="StatusCallback" value="setStatus"&lt;
-&gt;PARAM name="FileCompleteCallback" value="finished"&lt;
-&gt;PARAM name="FTPCompleteCallback" value="allfinished"&lt;
-&gt;PARAM name="FileSelectCallback" value="setFilesSelected"&lt;
+&lt;APPLET code="FTPApplet" id="ftpappl" width="1" height="1" archive="FTPApplet.jar" MAYSCRIPT&gt;
+&lt;PARAM name="FilePercentCallBack" value="setFilePercent"&gt;
+&lt;PARAM name="PercentCallback" value="setPercent"&gt;
+&lt;PARAM name="StatusCallback" value="setStatus"&gt;
+&lt;PARAM name="FileCompleteCallback" value="finished"&gt;
+&lt;PARAM name="FTPCompleteCallback" value="allfinished"&gt;
+&lt;PARAM name="FileSelectCallback" value="setFilesSelected"&gt;
 Java Applet Support Required
-&gt;/APPLET&lt;
+&lt;/APPLET&gt;
 </pre>
 
 If the applet loads successfully, you can make calls to it through JavaScript:
 
 document.ftpappl.getFiles(true);
 
-function setFilesSelected( inFileList ) { var returnCode = document.ftpappl.sendFiles(currSecurityKey, inFileList); currSecurityKey = document.ftpappl.getAccessCode(); }
+function setFilesSelected( inFileList ) { <br>
+  var returnCode = document.ftpappl.sendFiles(currSecurityKey, inFileList); <br>
+  currSecurityKey = document.ftpappl.getAccessCode();  <br>
+}
