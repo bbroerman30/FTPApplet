@@ -1,52 +1,52 @@
-SFTPApplet
+FTPApplet
 ===========
 
-This applet plugin.jar (which can be found in the jdk)
-
-Java applet for use in websites as a file uploader that allows multi-file select, and uses FTP for file transfer.
-
+This applet plugin.jar (which can be found in the jdk)<br>
+<br>
+Java applet for use in websites as a file uploader that allows multi-file select, and uses FTP for file transfer.<br>
+<br>
 The plugin will can be configured to use specific file filters (through a call to a webservice) and to validate
 the files before sending is allowed. The webservices will always be on the same server that the applets codebase 
 is set to. Additionally, before sending, it will call the webservice to retrieve the FTP username and passowrd 
 (thus these never have to be code into the applet). At any of these stages, you can add authentication on the 
-webservice side.
-
+webservice side.<br>
+<br>
 You should use a public FTP server for this as the FTP protocol sends all data, commands, and credentials as clear text.
 The PHP side webservice can then copy the files after they are authenticated to a proper directory. If you require
-security, I would suggest using the SFTP applet instead.
-
+security, I would suggest using the SFTP applet instead.<br>
+<br>
 The applet is programmable via JavaScript. There are methods available to show the user's file select dialog 
 (which is a Swing component), get the list of selected files, and to send the files. Callbacks are configurable 
 so that the applet can tell the JavaScript the status of a file transfer (success or fail) and the percentage of 
-the file(s) sent.
-
-The callbacks can be set in the applet tag via the following parameters: 
-FilePercentCallBack - Called periodically with the percentage transferred for the current file. 
-PercentCallBack - Called periodically with the overall percentage transferred 
-StatusCallback - Called periodically with the status of the transfer batch 
-FTPCompleteCallback - Called when each file is done with a status for that file 
-FileCompleteCallback - Called when the entire batch is completed with the overall status 
-FileSelectCallback- Called when the use clicks OK on the file selection dialog, and passed the list of files selected (as a comma delimited list)
-
-Additionally, the methods exposed are: 
-setPercentCallBack - Sets the Percent Callback function name. 
-setFilePercentCallBack - Sets the File Percent Callback function name. 
-setStatusCallBack - Sets the status Callback function name. 
-setFileCompleteCallBack - Sets the File Complete Callback function name. 
-setFtpCompleteCallBack - Sets the FTP Complete Callback function name. 
-setFileSelectCallBack - Sets the File selected Callback function name.
-
-getAccessCode - return the current authentication nonce code. 
-setAccessCode - sets the authentication nonce code.
-sendFiles( String accessCode, String fileList) - send a list of files (comma delimted list), and use the specified nonce code. The file list must be a subset of those selected by the user the last time the selection dialog was opened. 
-sendFiles( String accessCode ) - send the last user selected list of files. 
-sendFiles( ) - Send the last user selected list of files, and use the internal auth nonce. 
-getFiles( boolean rememberLastDir ) - Show the use file selection dialog. Optionally, remember the last directory selected. 
-getSingleFile( boolean rememberLastDir ) - Same as getFiles, but allows the user to select only one file.
-
-The applet makes use of the ftpauthserver.php to authorize files, get the list of file filters, 
-and to indicate when a file has been transferred.
-
+the file(s) sent.<br>
+<br>
+The callbacks can be set in the applet tag via the following parameters: <br>
+<b>FilePercentCallBack</b> - Called periodically with the percentage transferred for the current file. <br>
+<b>PercentCallBack</b> - Called periodically with the overall percentage transferred <br>
+<b>StatusCallback</b> - Called periodically with the status of the transfer batch <br>
+<b>FTPCompleteCallback</b> - Called when each file is done with a status for that file <br>
+<b>FileCompleteCallback</b> - Called when the entire batch is completed with the overall status <br>
+<b>FileSelectCallback</b> - Called when the use clicks OK on the file selection dialog, and passed the list of files selected (as a comma delimited list)<br>
+<br>
+Additionally, the methods exposed are: <br>
+<b>setPercentCallBack</b> - Sets the Percent Callback function name. <br>
+<b>setFilePercentCallBack</b> - Sets the File Percent Callback function name. <br>
+<b>setStatusCallBack</b> - Sets the status Callback function name. <br>
+<b>setFileCompleteCallBack</b> - Sets the File Complete Callback function name. <br>
+<b>setFtpCompleteCallBack</b> - Sets the FTP Complete Callback function name. <br>
+<b>setFileSelectCallBack</b> - Sets the File selected Callback function name.<br>
+<br>
+<b>getAccessCode</b> - return the current authentication nonce code. <br>
+<b>setAccessCode</b> - sets the authentication nonce code.<br>
+<b>sendFiles( String accessCode, String fileList )</b> - send a list of files (comma delimted list), and use the specified nonce code. The file list must be a subset of those selected by the user the last time the selection dialog was opened. <br>
+<b>sendFiles( String accessCode )</b> - send the last user selected list of files. <br>
+<b>sendFiles( )</b> - Send the last user selected list of files, and use the internal auth nonce. <br>
+<b>getFiles( boolean rememberLastDir )</b> - Show the use file selection dialog. Optionally, remember the last directory selected. <br>
+<b>getSingleFile( boolean rememberLastDir )</b> - Same as getFiles, but allows the user to select only one file.<br>
+<br>
+The applet makes use of the ftpauthserver.php to authorize files, get the list of file filters,
+and to indicate when a file has been transferred.<br>
+<br>
 === Building ===
 
 This applet requires plugin.jar (which can be found in the jdk) this should be in your build path.
