@@ -638,6 +638,9 @@ public class FTPApplet extends JApplet
             //
             // Set the security key, and action (upload photo). These will be POST parameters.
             //
+        	if( null == accessCode )
+        		accessCode = "";
+        	
             String params = "key=" + URLEncoder.encode(accessCode, "UTF-8") + "&action=getvalidfileslist";
 
             if(multiFiles)
@@ -731,6 +734,9 @@ public class FTPApplet extends JApplet
         // webservice determines we can send, it will send back the FTP credentials and
         // a new security code. These will be stored in the appropriate class variables.
         //
+    	if( null == accessCode )
+    		accessCode = "";
+
         try
         {
             //
@@ -811,10 +817,10 @@ public class FTPApplet extends JApplet
         // This method will call a special method on the ftpauthserver.php
         // webservice to tell the application that the file has been successfully
         // sent, and can now be processed by the program.
-        //
+        //    	
         try
         {
-            String params = "key="+URLEncoder.encode(currAccessCode, "UTF-8")+"&action=photoUploadDone&numFilesSent="+
+        	String params = "key="+URLEncoder.encode(currAccessCode, "UTF-8")+"&action=photoUploadDone&numFilesSent="+
                            Integer.toString(numFilesSent)+"&filelist="+URLEncoder.encode(fileList, "UTF-8");
 
             //
@@ -1221,7 +1227,7 @@ public class FTPApplet extends JApplet
                 		chooser = new JFileChooser();
                 	}
                 	
-                    chooser.setFileView(new ImageFileView());
+                    //chooser.setFileView(new ImageFileView());
                 	
             	    chooser.setMultiSelectionEnabled(showMultiFiles);
             	    
@@ -1247,8 +1253,8 @@ public class FTPApplet extends JApplet
                     AbstractButton listbutton = SwingUtils.getDescendantOfType(AbstractButton.class,
                     		chooser, "Icon", UIManager.getIcon("FileChooser.listViewIcon"));
                   
-                    listbutton.addActionListener( new ListActionListener(chooser) );
-                    detailbutton.addActionListener( new DetailActionListener(chooser) );            	      
+                    //listbutton.addActionListener( new ListActionListener(chooser) );
+                    //detailbutton.addActionListener( new DetailActionListener(chooser) );            	      
             	    
                 	if( null == content )
                 		System.err.println("Content Pane is null");
