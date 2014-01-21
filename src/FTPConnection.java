@@ -1,4 +1,3 @@
-
 /**
  * File:   FTPConnection.java
  * Author: Bret Taylor <btaylor@cs.stanford.edu>
@@ -528,7 +527,8 @@ public class FTPConnection extends Object {
             {
                 public Object run()  throws IOException
                 {
-                    String finalfilename = fFileName.substring(fFileName.lastIndexOf("\\")+1);
+                    File f = new File(fFileName);
+		    String finalfilename = f.getName();
 
                     return writeDataFromFile("stor ", finalfilename, fFileName);
                 }
