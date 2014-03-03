@@ -1,5 +1,7 @@
 FTPApplet
 ===========
+BSD License. You are free to do what you wish with this code, as long as you keep the copyright headers in place.
+If you make bug fixes, I would appreciate it if you pushed them back here, but you don't have to if you don't want to.
 
 This applet plugin.jar (which can be found in the jdk)<br>
 <br>
